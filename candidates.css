@@ -1,0 +1,46 @@
+#main{
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+
+#nav{
+  height: 30px;
+  padding: 8px;
+  text-align: center;
+}
+
+#nav h1{
+  display: inline;
+}
+
+.right{
+  float: right;
+}
+
+.left{
+  float: left;
+}
+
+.content-item{
+  padding:10px;
+  margin:10px;
+  flex: 1
+}
+
+.red{
+  background-color: red;
+  color:white;
+}
+
+.blue{
+  background-color: blue;
+  color:white;
+}
+
+.green{
+  background-color: green;
+  color:white;
+}
