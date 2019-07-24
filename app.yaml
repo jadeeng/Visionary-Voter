@@ -5,6 +5,7 @@ threadsafe: true
 handlers:
 - url: /.*
   script: main.app
+  login: optional
 
 libraries:
 - name: webapp2
