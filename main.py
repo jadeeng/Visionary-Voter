@@ -4,11 +4,14 @@ import jinja2
 import json
 from datetime import datetime
 from datetime import timedelta
+from google.appengine.api import users
+from google.appengine.ext import ndb
 
 jinja_current_dir = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
+
 
 CANDIDATES =[
     "Steve",
@@ -39,6 +42,7 @@ class CandidateHandler(webapp2.RequestHandler):
       self.response.headers['Content-Type'] = 'application/json'
       self.response.write(json.dumps(candidates))
 
+
 class CalendarHandler(webapp2.RequestHandler):
     def get(self):
         start_string = self.request.get('starttime')
@@ -55,8 +59,28 @@ class CalendarHandler(webapp2.RequestHandler):
         calendar_HTML = "<HTML><BODY><A href='%s' target='_blank'>Test Event Link</A></BODY></HTML>"
         self.response.write(calendar_HTML % calendar_link)
 
+
+
+class BlogPostHandler(webapp2.RequestHandler):
+    def get(self):
+        # [START user_details]
+        user = users.get_current_user()
+        if user:
+            nickname = user.nickname()
+            logout_url = users.create_logout_url('/')
+            greeting = 'Welcome, {}! (<a href="{}">sign out</a>)'.format(
+                nickname, logout_url)
+        else:
+            login_url = users.create_login_url('/')
+            greeting = '<a href="{}">Sign in</a>'.format(login_url)
+        # [END user_details]
+        self.response.write(
+            '<html><body>{}</body></html>'.format(greeting))
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/CandidateList', CandidateHandler),
-    ("/calendar", CalendarHandler)
+    ('/calendar', CalendarHandler)
+    ('/blogpost', BlogPostHandler)
+
 ], debug=True)
