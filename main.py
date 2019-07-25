@@ -61,10 +61,16 @@ class CalendarHandler(webapp2.RequestHandler):
 
 class LoginPageHandler(webapp2.RequestHandler):
     def get(self):
-        login_url = users.create_login_url('/blogpost')
-        greeting = '<a href="{}">Sign in</a>'.format(login_url)
-        self.response.write(
-            '<html><body>{}</body></html>'.format(greeting))
+        user = users.get_current_user()
+        if user:
+            nickname = user.nickname()
+            logout_url = users.create_logout_url('/')
+            greeting = 'Welcome, {}! (<a href="{}">sign out</a>)'.format(nickname, logout_url)
+            self.response.write('<html><body>{}</body></html>'.format(greeting))
+        else:
+            login_url = users.create_login_url('/blogpost')
+            greeting = '<a href="{}">Sign in</a>'.format(login_url)
+            self.response.write('<html><body>{}</body></html>'.format(greeting))
 
 class BlogPostHandler(webapp2.RequestHandler):
     def get(self):
@@ -80,42 +86,12 @@ class AfterPostHandler(webapp2.RequestHandler):
     def get(self):
         template = jinja_current_dir.get_template('afterpost.html')
         self.response.write(template.render())
-        #my_variable_dict = {
-        #"title_color": "red",
-        #"line1": "",
-        #"line2": "Me: Gets a bad grade on a test",
-        #"line3": "Me:",
-        #"meme_img_url": "https://www.publicdomainpictures.net/pictures/90000/velka/alpaca-chewing.jpg"
-        #}
-        #self.response.write(template.render(my_variable_dict))
+
     def post(self):
         template = jinja_current_dir.get_template('afterpost.html')
         self.response.write(template.render())
-        #template = jinja_current_dir.get_template('results.html')
-        #title_color = self.request.get("title_line")
-        #first_line = self.request.get('first')
-        #second_line = self.request.get('second')
-        #third_line = self.request.get('third')
-        #meme_picture = self.request.get("meme_picture")
 
-        #my_variable_dict = {
-        #"title_color": title_color,
-        #"line1": first_line,
-        #"line2": second_line,
-        #"line3": third_line,
-        #"meme_img_url": getImageUrl(meme_picture)
-        #}
-        #self.response.write(template.render(my_variable_dict))
 
-class LogoutPageHandler(webapp2.RequestHandler):
-    def get(self):
-        user = users.get_current_user()
-        nickname = user.nickname()
-        logout_url = users.create_logout_url('/')
-        greeting = 'Welcome, {}! (<a href="{}">sign out</a>)'.format(
-        nickname, logout_url)
-        self.response.write(
-            '<html><body>{}</body></html>'.format(greeting))
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
@@ -124,6 +100,5 @@ app = webapp2.WSGIApplication([
     ('/login', LoginPageHandler),
     ('/blogpost', BlogPostHandler),
     ('/afterpost', AfterPostHandler),
-    ('/logout', LogoutPageHandler),
 
 ], debug=True)
