@@ -129,15 +129,10 @@ class AfterPostHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/CandidateList', CandidateHandler),
-<<<<<<< HEAD
     ("/calendar", CalendarHandler),
     ("/events", EventHandler),
     ('/blogpost', BlogPostHandler),
-=======
-    ('/calendar', CalendarHandler),
->>>>>>> 17d68002a06665bf504d274dde6a22ddbe25ccb2
     ('/login', LoginPageHandler),
-    ('/blogpost', BlogPostHandler),
     ('/afterpost', AfterPostHandler),
 
 ], debug=True)
