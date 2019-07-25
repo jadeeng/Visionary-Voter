@@ -6,6 +6,7 @@ from datetime import datetime
 from datetime import timedelta
 from google.appengine.api import users
 from google.appengine.ext import ndb
+from VotingModel import Event, Candidate, BlogPost
 
 jinja_current_dir = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -79,17 +80,25 @@ class BlogPostHandler(webapp2.RequestHandler):
             blogpost_template = jinja_current_dir.get_template("blogpost.html")
             self.response.write(blogpost_template.render())
         else:
-            template = jinja_current_dir.get_template("restricted.html")
-            self.response.write(template.render())
+            restricted_template = jinja_current_dir.get_template("restricted.html")
+            self.response.write(restricted_template.render())
 
 class AfterPostHandler(webapp2.RequestHandler):
     def get(self):
-        template = jinja_current_dir.get_template('afterpost.html')
-        self.response.write(template.render())
+        after_template = jinja_current_dir.get_template('afterpost.html')
+        self.response.write(after_template.render())
 
     def post(self):
-        template = jinja_current_dir.get_template('afterpost.html')
-        self.response.write(template.render())
+        after_template = jinja_current_dir.get_template('afterpost.html')
+        user = users.get_current_user()
+        username = self.request.get('username')
+        words = self.request.get('subject')
+        new_blogpost = BlogPost()
+        new_blogpost.creator_username = username
+        new_blogpost.creator_id = user.user_id()
+        new_blogpost.post_content = words
+        new_blogpost.put()
+        self.response.write(after_template.render())
 
 
 
