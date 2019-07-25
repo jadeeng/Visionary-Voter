@@ -6,6 +6,13 @@
   min-height: 100vh;
 }
 
+#dropdown-input{
+  max-width: auto;
+  min-height: 10px;
+  margin: none;
+  display: flex;
+  flex-direction: row;
+}
 #nav{
   height: 30px;
   padding: 8px;

@@ -55,8 +55,31 @@ class CalendarHandler(webapp2.RequestHandler):
         calendar_HTML = "<HTML><BODY><A href='%s' target='_blank'>Test Event Link</A></BODY></HTML>"
         self.response.write(calendar_HTML % calendar_link)
 
+class EventHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.content_type = 'text/json'
+        if self.request.get('after'):
+            latest_event_key = ndb.Key(urlsafe=self.request.get('after'))
+            latest_event = latest_event_key.get()
+            events = Event.query(Event.created_at > latest_meme.created_at).order(-Meme.created_at).fetch()
+        else:
+            latest_event = latest_event.query().order(-latest_event.created_at).fetch(10)
+        new_events_list = []
+        for event in latest_event:
+            events_list.append({
+              'image_file': image.image_file,
+              'text': event.top_text,
+              'created_at': event.created_at.isoformat(),
+              'key': event.key.urlsafe(),
+            })
+        self.response.write(json.dumps(events_list))
+
+
+
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/CandidateList', CandidateHandler),
     ("/calendar", CalendarHandler)
+    ("/events", EventHandler)
 ], debug=True)
