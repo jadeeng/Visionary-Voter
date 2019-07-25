@@ -9,6 +9,7 @@
       <h1>Visionary Voters</h1>
       <div id="dropdown">
         <input type="text" id="dropdown-input"></input>
+        <input id="search" type="submit" value="Submit">
         <div class="results">
           <ul id="name-list"></ul>
       </div>
@@ -16,12 +17,18 @@
       <form action="/calendar">
         Start time:
         <input type="datetime-local" name="starttime">
-        <input type="submit" value="Send">
+        <input id ="calendar" type="submit" value="Calendar">
       </form>
-      <div id="pop_upbg"
+
+      <form method=POST action="/">
+        Candidate Information:<br>
+        <input type="text" name="user-fav-food" value="Nachos">
+        <input type="submit" value="I'm Hungry">
+      </form>
+
+      <div id="pop_upbg">
     </div>
 
     <script src="/static/script.js"></script>
   </body>
->>>>>>> 9b424f5fbd3ffd079a16806fa97edaff0c577eec
 </html>
