@@ -4,6 +4,8 @@
   display: flex;
   flex-direction: row;
   min-height: 40vh;
+  justify-content: center;
+
 }
 
 #nav{
@@ -15,7 +17,7 @@
 #nav h1{
   display: inline;
   text-align: center;
-  font-family: sans-serif;
+  font-family: verdana;
 }
 
 
@@ -63,6 +65,7 @@ img.resize4{
 
 div.content-item1{
   text-align: center;
+  border-style: inset;
 }
 
 .content-item2{
@@ -73,6 +76,7 @@ div.content-item1{
 
 div.content-item2{
   text-align: center;
+  border-style: inset;
 }
 
 .content-item3{
@@ -83,6 +87,18 @@ div.content-item2{
 
 div.content-item3{
     text-align: center;
+    border-style: inset;
+}
+
+.content-item4{
+  padding:10px;
+  margin:10px;
+  flex: 1
+}
+
+div.content-item4{
+    text-align: center;
+    border-style: inset;
 }
 
 .blue{
@@ -93,4 +109,12 @@ div.content-item3{
 .red{
   background-color: #FFE4E1;
   color:black;
+}
+
+.sticky-footer {
+  position: absolute;
+  left: 0 ; right: 0; bottom: 0;
+  background-color:	#DCDCDC;
+  min-height: 20vh;
+
 }
