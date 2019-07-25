@@ -59,6 +59,7 @@ class CalendarHandler(webapp2.RequestHandler):
         calendar_HTML = "<HTML><BODY><A href='%s' target='_blank'>Test Event Link</A></BODY></HTML>"
         self.response.write(calendar_HTML % calendar_link)
 
+<<<<<<< HEAD
 class EventHandler(webapp2.RequestHandler):
     def get(self):
         self.response.content_type = 'text/json'
@@ -79,8 +80,10 @@ class EventHandler(webapp2.RequestHandler):
         self.response.write(json.dumps(events_list))
 
 class BlogPostHandler(webapp2.RequestHandler):
+=======
+class LoginPageHandler(webapp2.RequestHandler):
+>>>>>>> eaab636acd218fd2b6b1d8d6be80c73a4dddf4a2
     def get(self):
-        # [START user_details]
         user = users.get_current_user()
         if user:
             nickname = user.nickname()
@@ -88,18 +91,31 @@ class BlogPostHandler(webapp2.RequestHandler):
             greeting = 'Welcome, {}! (<a href="{}">sign out</a>)'.format(
                 nickname, logout_url)
         else:
-            login_url = users.create_login_url('/')
+            login_url = users.create_login_url('/blogpost')
             greeting = '<a href="{}">Sign in</a>'.format(login_url)
-        # [END user_details]
         self.response.write(
             '<html><body>{}</body></html>'.format(greeting))
 
+<<<<<<< HEAD
 
+=======
+class BlogPostHandler(webapp2.RequestHandler):
+    def get(self):
+        blogpost_template = jinja_current_dir.get_template("blogpost.html")
+        self.response.write(blogpost_template.render())
+>>>>>>> eaab636acd218fd2b6b1d8d6be80c73a4dddf4a2
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/CandidateList', CandidateHandler),
+<<<<<<< HEAD
     ("/calendar", CalendarHandler),
     ("/events", EventHandler),
     '/blogpost', BlogPostHandler)
+=======
+    ('/calendar', CalendarHandler)
+    ('/blogpost', BlogPostHandler),
+    ('/login', LoginPageHandler),
+
+>>>>>>> eaab636acd218fd2b6b1d8d6be80c73a4dddf4a2
 ], debug=True)
