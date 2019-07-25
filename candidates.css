@@ -3,13 +3,14 @@
   margin: auto;
   display: flex;
   flex-direction: row;
-   min-height: 40vh;
+  min-height: 40vh;
   justify-content: center;
 
 }
 
 #nav{
   height: 50px;
+<<<<<<< HEAD
   min-height: 100vh;
 }
 
@@ -26,13 +27,14 @@
 }
 #nav{
   height: 30px;
+=======
+>>>>>>> 17d68002a06665bf504d274dde6a22ddbe25ccb2
   padding: 8px;
   text-align: center;
 }
 
 #nav h1{
   display: inline;
-  
   text-align: center;
   font-family: verdana;
 }
@@ -71,11 +73,14 @@ img.resize4{
 .left{
   float: left;
 }
+
 .content-item1{
   padding:10px;
   margin:10px;
   flex: 1
-}div.content-item1{
+}
+
+div.content-item1{
   text-align: center;
   border-style: inset;
 }
