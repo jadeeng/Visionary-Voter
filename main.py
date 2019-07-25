@@ -30,6 +30,17 @@ def get_candidates(prefix):
         return results
   return results
 
+  def get_events(prefix):
+    results = []
+    if len(prefix) == 0:
+      return results
+    for events in EVENTS:
+      if events.lower().startswith(prefix.lower()):
+        results.append(events)
+        if len(results) == 5:
+          return results
+    return results
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         start_template = jinja_current_dir.get_template("index.html")
@@ -59,7 +70,6 @@ class CalendarHandler(webapp2.RequestHandler):
         calendar_HTML = "<HTML><BODY><A href='%s' target='_blank'>Test Event Link</A></BODY></HTML>"
         self.response.write(calendar_HTML % calendar_link)
 
-<<<<<<< HEAD
 class EventHandler(webapp2.RequestHandler):
     def get(self):
         self.response.content_type = 'text/json'
@@ -79,10 +89,8 @@ class EventHandler(webapp2.RequestHandler):
             })
         self.response.write(json.dumps(events_list))
 
-class BlogPostHandler(webapp2.RequestHandler):
-=======
 class LoginPageHandler(webapp2.RequestHandler):
->>>>>>> eaab636acd218fd2b6b1d8d6be80c73a4dddf4a2
+
     def get(self):
         user = users.get_current_user()
         if user:
@@ -96,26 +104,19 @@ class LoginPageHandler(webapp2.RequestHandler):
         self.response.write(
             '<html><body>{}</body></html>'.format(greeting))
 
-<<<<<<< HEAD
 
-=======
 class BlogPostHandler(webapp2.RequestHandler):
     def get(self):
         blogpost_template = jinja_current_dir.get_template("blogpost.html")
         self.response.write(blogpost_template.render())
->>>>>>> eaab636acd218fd2b6b1d8d6be80c73a4dddf4a2
+
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/CandidateList', CandidateHandler),
-<<<<<<< HEAD
     ("/calendar", CalendarHandler),
     ("/events", EventHandler),
-    '/blogpost', BlogPostHandler)
-=======
-    ('/calendar', CalendarHandler)
     ('/blogpost', BlogPostHandler),
     ('/login', LoginPageHandler),
 
->>>>>>> eaab636acd218fd2b6b1d8d6be80c73a4dddf4a2
 ], debug=True)
