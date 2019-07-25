@@ -10,7 +10,6 @@
 
 #nav{
   height: 50px;
-<<<<<<< HEAD
   min-height: 100vh;
 }
 
@@ -27,8 +26,6 @@
 }
 #nav{
   height: 30px;
-=======
->>>>>>> 17d68002a06665bf504d274dde6a22ddbe25ccb2
   padding: 8px;
   text-align: center;
 }
