@@ -59,11 +59,8 @@ class CalendarHandler(webapp2.RequestHandler):
         calendar_HTML = "<HTML><BODY><A href='%s' target='_blank'>Test Event Link</A></BODY></HTML>"
         self.response.write(calendar_HTML % calendar_link)
 
-
-
-class BlogPostHandler(webapp2.RequestHandler):
+class LoginPageHandler(webapp2.RequestHandler):
     def get(self):
-        # [START user_details]
         user = users.get_current_user()
         if user:
             nickname = user.nickname()
@@ -71,16 +68,21 @@ class BlogPostHandler(webapp2.RequestHandler):
             greeting = 'Welcome, {}! (<a href="{}">sign out</a>)'.format(
                 nickname, logout_url)
         else:
-            login_url = users.create_login_url('/')
+            login_url = users.create_login_url('/blogpost')
             greeting = '<a href="{}">Sign in</a>'.format(login_url)
-        # [END user_details]
         self.response.write(
             '<html><body>{}</body></html>'.format(greeting))
+
+class BlogPostHandler(webapp2.RequestHandler):
+    def get(self):
+        blogpost_template = jinja_current_dir.get_template("blogpost.html")
+        self.response.write(blogpost_template.render())
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/CandidateList', CandidateHandler),
     ('/calendar', CalendarHandler)
-    ('/blogpost', BlogPostHandler)
+    ('/blogpost', BlogPostHandler),
+    ('/login', LoginPageHandler),
 
 ], debug=True)
