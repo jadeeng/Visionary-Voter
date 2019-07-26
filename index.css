@@ -140,6 +140,8 @@ img.hamburger{
 div.content-item1{
   text-align: center;
   border-style: inset;
+  display: inline;
+
 }
 
 img.resize1{
@@ -163,6 +165,7 @@ img.resize2{
 div.content-item2{
   text-align: center;
   border-style: inset;
+  display: inline;
 }
 
 #footer p{
