@@ -1,4 +1,4 @@
-from VotingModel import Event, Candidate
+from VotingModel import Event, Candidate, BlogPost
 
 def seed_data():
     ted_lieu_zipcodes = [
@@ -22,3 +22,8 @@ def seed_data():
                                "Congress Representative Ted Lieu and Senator "
                                "Kamala Harris"))
     event1.put()
+
+    blog_post_1 = BlogPost(creator_id= "123456789" , creator_username= "abc", post_content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
+    blog_post_1.put()
+    blog_post_2 = BlogPost(creator_id= "898765432" , creator_username= "abc", post_content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
+    blog_post_2.put()
