@@ -100,6 +100,13 @@ class AfterPostHandler(webapp2.RequestHandler):
         new_blogpost.put()
         self.response.write(after_template.render())
 
+class BlogPostListHandler(webapp2.RequestHandler):
+    def get(self):
+        choice_template = jinja_current_dir.get_template('search.html')
+        self.response.write(after_template.render())
+
+    def post(self):
+
 
 
 app = webapp2.WSGIApplication([
@@ -109,5 +116,6 @@ app = webapp2.WSGIApplication([
     ('/login', LoginPageHandler),
     ('/blogpost', BlogPostHandler),
     ('/afterpost', AfterPostHandler),
+    ('/blogpostlist', BlogPostListHandler),
 
 ], debug=True)
