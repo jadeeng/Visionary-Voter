@@ -92,7 +92,6 @@ class EventHandler(webapp2.RequestHandler):
         self.response.write(json.dumps(events_list))
 
 class LoginPageHandler(webapp2.RequestHandler):
-
     def get(self):
         user = users.get_current_user()
         if user:
@@ -115,11 +114,6 @@ class BlogPostHandler(webapp2.RequestHandler):
         else:
             restricted_template = jinja_current_dir.get_template("restricted.html")
             self.response.write(restricted_template.render())
-
-class SeedDataHandler(webapp2.RequestHandler):
-    def get(self):
-        seed_data()
-
 
 class AfterPostHandler(webapp2.RequestHandler):
     def get(self):
@@ -150,9 +144,9 @@ class BlogPostListHandler(webapp2.RequestHandler):
             list_of_posts = BlogPost.query().order(-BlogPost.created_at).fetch()
         else:
             list_of_posts = BlogPost.query().filter(BlogPost.creator_username == username).order(-BlogPost.created_at).fetch()
-        variable_dict = {'post': list_of_posts}
+        variable_dict = {'list': list_of_posts}
         search_template = jinja_current_dir.get_template('search_results.html')
-        self.response.write(search_template.render())
+        self.response.write(search_template.render(variable_dict))
 
 
 
