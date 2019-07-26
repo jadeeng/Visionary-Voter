@@ -4,9 +4,10 @@ import jinja2
 import json
 from datetime import datetime
 from datetime import timedelta
-from google.appengine.api import users
+from google.appengine.api import users, ndb, db
 from google.appengine.ext import ndb
 from VotingModel import Event, Candidate, BlogPost
+from seed_data import seed_data
 
 jinja_current_dir = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -38,7 +39,7 @@ def get_candidates(prefix):
     for events in EVENTS:
       if events.lower().startswith(prefix.lower()):
         results.append(events)
-        if len(results) == 5:
+        if len(results) == 2:
           return results
     return results
 
@@ -50,7 +51,7 @@ class MainHandler(webapp2.RequestHandler):
 class CandidateHandler(webapp2.RequestHandler):
     def get(self):
       prefix = self.request.get('q')
-      students = get_candidates(prefix)
+      students = get_candidates()
       self.response.headers['Content-Type'] = 'application/json'
       self.response.write(json.dumps(candidates))
 

@@ -9,13 +9,14 @@ class Event(ndb.Model):
 class Candidate(ndb.Model):
     party = ndb.StringProperty(required=True)
     name = ndb. StringProperty(required=True)
-    zipcode = ndb.IntegerProperty(required=True)
+    zipcode = db.ListProperty(required=True)
     district = ndb.StringProperty(required=True)
     state = ndb.StringProperty(required=True)
     level_government = ndb.KeyProperty(required=True)
-
     policies_supported = ndb.StringProperty(required=False)
 #policies supported only includes the latest policy supported
+    name = ndb.StringProperty(required=True)
+    policies_supported = ndb.StringProperty(required=False)
 
 # class BlogPost
 # user, date_time, content

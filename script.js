@@ -1,11 +1,11 @@
 function fetchNames(prefix) {
-  fetch(`http://localhost:8080/students?q=${prefix}`)
+  fetch(`http://localhost:8080/candidates?q=${zipcode}`)
     .then((resp) => resp.json())
     .then(addNames);
 }
 
 function addNames(names) {
-  const ul = document.getElementById('name-list');
+  const ul = document.getElementById('Candidates');
   while (ul.firstChild) {
       ul.removeChild(ul.firstChild);
   }

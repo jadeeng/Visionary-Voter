@@ -160,12 +160,12 @@
   <body>
     <div class="w3-text-teal">
       <h1>Visionary Voters</h1>
-      <div id="dropdown">
+      <!-- <div id="dropdown">
         <input type="text" id="dropdown-input"></input>
         <input id="search" type="submit" value="Submit">
         <div class="results">
           <ul id="name-list"></ul>
-      </div>
+      </div> -->
 
       <form action="/calendar">
         Start time:
@@ -173,11 +173,10 @@
         <input id ="calendar" type="submit" value="Calendar">
       </form>
 
-      <form method=POST action="/">
-        Candidate Information:<br>
-        <input type="text" name="user-fav-food" value="Nachos">
-        <input type="submit" value="I'm Hungry">
-      </form>
+      <div id="dropdown">
+   <input type="text" id="dropdown-input"></input>
+   <div class="results">
+     <ul id="Candidates"></ul>
 
       <div id="pop_upbg">
     </div>
