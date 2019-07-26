@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog Post Archives</title>
+  </head>
+  <body>
+    <h1>Search Results</h1>
+    <form action= "/blogpostlist">
+      <input type="submit" value="Back to Search Page">
+    </form>
+    <form action= "/">
+      <input type="submit" value="Back to Main Page">
+    </form>
+    {% for post in list %}
+      <h3>{{post.creator_username}}</h3>
+    {% endfor %}
+  </body>
+</html>
