@@ -1,4 +1,4 @@
-function fetchNames(prefix) {
+function fetchNames(zipcode) {
   fetch(`http://localhost:8080/candidates?q=${zipcode}`)
     .then((resp) => resp.json())
     .then(addNames);
