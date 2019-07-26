@@ -7,6 +7,7 @@ from datetime import timedelta
 from google.appengine.api import users
 from google.appengine.ext import ndb
 from VotingModel import Event, Candidate, BlogPost
+from seed_data import seed_data
 
 jinja_current_dir = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -22,13 +23,9 @@ CANDIDATES =[
 
 def get_candidates(prefix):
   results = []
-  if len(prefix) == 0:
-    return results
-  for candidates in CANDIDATES:
-    if candidates.lower().startswith(prefix.lower()):
-      results.append(candidates)
-      if len(results) == 5:
-        return results
+  candidates = Candidate.query().filter(Candidate.zipcode == prefix).fetch()
+  for candidate in candidates:
+      results.append({'name': candidate.name, 'link': candidate.link})
   return results
 
   def get_events(prefix):
@@ -38,7 +35,7 @@ def get_candidates(prefix):
     for events in EVENTS:
       if events.lower().startswith(prefix.lower()):
         results.append(events)
-        if len(results) == 5:
+        if len(results) == 2:
           return results
     return results
 
@@ -50,7 +47,7 @@ class MainHandler(webapp2.RequestHandler):
 class CandidateHandler(webapp2.RequestHandler):
     def get(self):
       prefix = self.request.get('q')
-      students = get_candidates(prefix)
+      candidates = get_candidates(prefix)
       self.response.headers['Content-Type'] = 'application/json'
       self.response.write(json.dumps(candidates))
 
@@ -115,6 +112,11 @@ class BlogPostHandler(webapp2.RequestHandler):
             restricted_template = jinja_current_dir.get_template("restricted.html")
             self.response.write(restricted_template.render())
 
+class SeedDataHandler(webapp2.RequestHandler):
+    def get(self):
+        seed_data()
+
+
 class AfterPostHandler(webapp2.RequestHandler):
     def get(self):
         after_template = jinja_current_dir.get_template('afterpost.html')
@@ -132,16 +134,33 @@ class AfterPostHandler(webapp2.RequestHandler):
         new_blogpost.put()
         self.response.write(after_template.render())
 
+class BlogPostListHandler(webapp2.RequestHandler):
+    def get(self):
+        search_template = jinja_current_dir.get_template('search.html')
+        self.response.write(search_template.render())
+
+    def post(self):
+        username = self.request.get('username')
+        username = username.strip()
+        if username == "":
+            list_of_posts = BlogPost.query().order(-BlogPost.created_at).fetch()
+        else:
+            list_of_posts = BlogPost.query().filter(BlogPost.creator_username == username).order(-BlogPost.created_at).fetch()
+        variable_dict = {'post': list_of_posts}
+        search_template = jinja_current_dir.get_template('search_results.html')
+        self.response.write(search_template.render())
+
 
 
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ('/CandidateList', CandidateHandler),
+    ('/candidates', CandidateHandler),
     ("/calendar", CalendarHandler),
     ("/events", EventHandler),
     ('/blogpost', BlogPostHandler),
     ('/login', LoginPageHandler),
     ('/afterpost', AfterPostHandler),
+    ('/blogpostlist', BlogPostListHandler),
 
 ], debug=True)

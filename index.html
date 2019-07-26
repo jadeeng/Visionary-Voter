@@ -4,7 +4,7 @@
   <title>
     Candidates
   </title>
-<link rel="stylesheet" type="text/css" href="index.css" />
+<link rel="stylesheet" type="text/css" href="/style/index.css" />
 </head>
 <body>
 <menu class = "menu-icon">
@@ -139,7 +139,7 @@ Senators: Dianne Feinstein & Kamala D. Harris
 
   <a href="https://websitebeaver.com/how-to-make-an-interactive-and-responsive-svg-map-of-us-states-capitals" target="_blank" style="position: absolute; bottom: 0px; right: 0px; text-decoration: none; color: #8a8787">Tutorial is on Website Beaver</a>
   <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-  <script src="index.js"></script>
+  <script src="/scripts/index.js"></script>
 
 </main>
 
@@ -168,12 +168,12 @@ Senators: Dianne Feinstein & Kamala D. Harris
   <body>
     <div class="w3-text-teal">
       <h1>Visionary Voters</h1>
-      <div id="dropdown">
+      <!-- <div id="dropdown">
         <input type="text" id="dropdown-input"></input>
         <input id="search" type="submit" value="Submit">
         <div class="results">
           <ul id="name-list"></ul>
-      </div>
+      </div> -->
 
       <form action="/calendar">
         Start time:
@@ -181,15 +181,14 @@ Senators: Dianne Feinstein & Kamala D. Harris
         <input id ="calendar" type="submit" value="Calendar">
       </form>
 
-      <form method=POST action="/">
-        Candidate Information:<br>
-        <input type="text" name="user-fav-food" value="Nachos">
-        <input type="submit" value="I'm Hungry">
-      </form>
+      <div id="dropdown">
+   <input type="text" id="dropdown-input"></input>
+   <div class="results">
+     <ul id="Candidates"></ul>
 
       <div id="pop_upbg">
     </div>
 
-    <script src="/static/script.js"></script>
+    <script src="/scripts/script.js"></script>
   </body>
 </html>

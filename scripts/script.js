@@ -1,17 +1,20 @@
 function fetchNames(prefix) {
-  fetch(`http://localhost:8080/students?q=${prefix}`)
+  fetch(`http://localhost:8080/candidates?q=${prefix}`)
     .then((resp) => resp.json())
     .then(addNames);
 }
 
-function addNames(names) {
-  const ul = document.getElementById('name-list');
+function addNames(candidates) {
+  const ul = document.getElementById('Candidates');
   while (ul.firstChild) {
       ul.removeChild(ul.firstChild);
   }
-  for (let name of names) {
-    const li = document.createElement('li');
-    li.textContent = name;
+  for (let candidate of candidates) {
+    let li = document.createElement('li');
+    let link = document.createElement('a');
+    link.href = candidate.link;
+    link.textContent = candidate.name;
+    li.appendChild(link);
     ul.appendChild(li);
   }
 }
