@@ -23,13 +23,9 @@ CANDIDATES =[
 
 def get_candidates(prefix):
   results = []
-  if len(prefix) == 0:
-    return results
-  for candidates in CANDIDATES:
-    if candidates.lower().startswith(prefix.lower()):
-      results.append(candidates)
-      if len(results) == 5:
-        return results
+  candidates = Candidate.query().filter(Candidate.zipcode == prefix).fetch()
+  for candidate in candidates:
+      results.append({'name': candidate.name, 'link': candidate.link})
   return results
 
   def get_events(prefix):
@@ -51,7 +47,7 @@ class MainHandler(webapp2.RequestHandler):
 class CandidateHandler(webapp2.RequestHandler):
     def get(self):
       prefix = self.request.get('q')
-      students = get_candidates()
+      candidates = get_candidates(prefix)
       self.response.headers['Content-Type'] = 'application/json'
       self.response.write(json.dumps(candidates))
 
@@ -159,7 +155,7 @@ class BlogPostListHandler(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ('/CandidateList', CandidateHandler),
+    ('/candidates', CandidateHandler),
     ("/calendar", CalendarHandler),
     ("/events", EventHandler),
     ('/blogpost', BlogPostHandler),
