@@ -18,3 +18,10 @@ libraries:
   version: latest
 - name: jinja2
   version: latest
+
+indexes:
+  - kind: BlogPost
+    properties:
+    - name: creator_username
+    - name: created_at
+      direction: desc
