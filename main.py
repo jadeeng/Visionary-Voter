@@ -4,7 +4,7 @@ import jinja2
 import json
 from datetime import datetime
 from datetime import timedelta
-from google.appengine.api import users, ndb, db
+from google.appengine.api import users
 from google.appengine.ext import ndb
 from VotingModel import Event, Candidate, BlogPost
 from seed_data import seed_data
@@ -115,6 +115,11 @@ class BlogPostHandler(webapp2.RequestHandler):
         else:
             restricted_template = jinja_current_dir.get_template("restricted.html")
             self.response.write(restricted_template.render())
+
+class SeedDataHandler(webapp2.RequestHandler):
+    def get(self):
+        seed_data()
+
 
 class AfterPostHandler(webapp2.RequestHandler):
     def get(self):
