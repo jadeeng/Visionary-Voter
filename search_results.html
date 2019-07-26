@@ -17,5 +17,8 @@
       <p>{{post.post_content}}</p>
       </div>
     {% endfor %}
+    {% if list|length == 0 %}
+      <h3> Sorry, data for this user does not exist. Please try again. </h3>
+    {% endif %}
   </body>
 </html>
