@@ -4,9 +4,10 @@ import jinja2
 import json
 from datetime import datetime
 from datetime import timedelta
-from google.appengine.api import users
+from google.appengine.api import users, ndb, db
 from google.appengine.ext import ndb
 from VotingModel import Event, Candidate, BlogPost
+from seed_data import seed_data
 
 jinja_current_dir = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -31,6 +32,17 @@ def get_candidates(prefix):
         return results
   return results
 
+  def get_events(prefix):
+    results = []
+    if len(prefix) == 0:
+      return results
+    for events in EVENTS:
+      if events.lower().startswith(prefix.lower()):
+        results.append(events)
+        if len(results) == 2:
+          return results
+    return results
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         start_template = jinja_current_dir.get_template("index.html")
@@ -39,7 +51,7 @@ class MainHandler(webapp2.RequestHandler):
 class CandidateHandler(webapp2.RequestHandler):
     def get(self):
       prefix = self.request.get('q')
-      students = get_candidates(prefix)
+      students = get_candidates()
       self.response.headers['Content-Type'] = 'application/json'
       self.response.write(json.dumps(candidates))
 
@@ -60,7 +72,27 @@ class CalendarHandler(webapp2.RequestHandler):
         calendar_HTML = "<HTML><BODY><A href='%s' target='_blank'>Test Event Link</A></BODY></HTML>"
         self.response.write(calendar_HTML % calendar_link)
 
+class EventHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.content_type = 'text/json'
+        if self.request.get('after'):
+            latest_event_key = ndb.Key(urlsafe=self.request.get('after'))
+            latest_event = latest_event_key.get()
+            events = Event.query(Event.created_at > latest_meme.created_at).order(-Meme.created_at).fetch()
+        else:
+            latest_event = latest_event.query().order(-latest_event.created_at).fetch(10)
+        new_events_list = []
+        for event in latest_event:
+            events_list.append({
+              'image_file': image.image_file,
+              'text': event.top_text,
+              'created_at': event.created_at.isoformat(),
+              'key': event.key.urlsafe(),
+            })
+        self.response.write(json.dumps(events_list))
+
 class LoginPageHandler(webapp2.RequestHandler):
+
     def get(self):
         user = users.get_current_user()
         if user:
@@ -72,6 +104,7 @@ class LoginPageHandler(webapp2.RequestHandler):
             login_url = users.create_login_url('/blogpost')
             greeting = '<a href="{}">Sign in</a>'.format(login_url)
             self.response.write('<html><body>{}</body></html>'.format(greeting))
+
 
 class BlogPostHandler(webapp2.RequestHandler):
     def get(self):
@@ -118,12 +151,14 @@ class BlogPostListHandler(webapp2.RequestHandler):
 
 
 
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/CandidateList', CandidateHandler),
-    ('/calendar', CalendarHandler),
-    ('/login', LoginPageHandler),
+    ("/calendar", CalendarHandler),
+    ("/events", EventHandler),
     ('/blogpost', BlogPostHandler),
+    ('/login', LoginPageHandler),
     ('/afterpost', AfterPostHandler),
     ('/blogpostlist', BlogPostListHandler),
 
