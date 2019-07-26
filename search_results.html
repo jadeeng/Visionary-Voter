@@ -12,7 +12,10 @@
       <input type="submit" value="Back to Main Page">
     </form>
     {% for post in list %}
-      <h3>{{post.creator_username}}</h3>
+      <div>
+      <h3>Written by {{post.creator_username}} on {{post.created_at}}</h3>
+      <p>{{post.post_content}}</p>
+      </div>
     {% endfor %}
   </body>
 </html>

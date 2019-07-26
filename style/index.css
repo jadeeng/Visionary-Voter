@@ -9,22 +9,29 @@
   margin: auto;
 }
 
-#gallery {
-  scroll-snap-type: x mandatory;
-  overflow-x: scroll;
-  display: flex;
+#nav h1{
+  position: absolute;
+  top: 0px;
+  justify-content: center;
+  text-align: center;
 }
 
-#gallery img {
-   scroll-snap-align: center;
-}
-</style>
 
-<div id="gallery">
-  <img src="cat.jpg">
-  <img src="dog.jpg">
-  <img src="another_cute_animal.jpg">
-</div>
+#vote{
+  position: absolute;
+  width: 100px;
+  height: 50px;
+  right: 1050px;
+  top: 20px;
+  background-color: #D3D3D3;
+  font-family: verdana;
+  font-weight: bold;
+}
+
+#vote: hover {
+  background-color: black;
+  color: white;
+}
 
 path:hover, circle:hover {
   stroke: #002868 !important;
