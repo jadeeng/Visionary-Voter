@@ -39,6 +39,10 @@ def get_candidates(prefix):
           return results
     return results
 
+class SeedDataHandler(webapp2.RequestHandler):
+    def get(self):
+        seed_data()
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         start_template = jinja_current_dir.get_template("index.html")
@@ -155,6 +159,7 @@ app = webapp2.WSGIApplication([
     ('/blogpost', BlogPostHandler),
     ('/login', LoginPageHandler),
     ('/afterpost', AfterPostHandler),
-    ('/blogpostlist', BlogPostListHandler),
+    ('/blogpostlist', BlogPostListHandler)
+    ("/seed_data", SeedDataHandler),
 
 ], debug=True)
