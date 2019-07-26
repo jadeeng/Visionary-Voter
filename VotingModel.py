@@ -11,7 +11,6 @@ class Candidate(ndb.Model):
 #policies supported only includes the latest policy supported
     name = ndb.StringProperty(required=True)
     policies_supported = ndb.StringProperty(required=False)
-    link = ndb.StringProperty(required=False, default="")
 
 class Event(ndb.Model):
     zipcode = ndb.StringProperty(required=True)
