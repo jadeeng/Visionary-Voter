@@ -21,6 +21,27 @@
   </div>
 
   </div>
+  <head>
+      <title>Final Project</title>
+  </head>
+  <body>
+    <div class="w3-text-teal">
+      <h1>Visionary Voters</h1>
+
+      <form action="/calendar">
+        Start time:
+        <input type="datetime-local" name="starttime">
+        <input id ="calendar" type="submit" value="Calendar">
+      </form>
+
+      <div id="dropdown">
+   <input type="text" id="dropdown-input"></input>
+   <div class="results">
+     <ul id="Candidates"></ul>
+
+      <div id="pop_upbg">
+    </div>
+
   <script>
     function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
@@ -46,20 +67,13 @@
   <div id="nav">
 
     <!-- <h1><center><img class = "visionary-voters" src = "images/visionary-voters.jpg"</h1> -->
-    <h1><center> Visionary Voters </h1>
   </div>
 
 </body>
 <main class="Site-content">
 <div id="main">
   <div style="margin-bottom: 10px;">
-    <form>
-      <label for="zip">Input zipcode to find Events and Candidates! </label>
-      <input type="text" id="zipsearch_zip" placeholder="Zip Code" />
-      <button id="zipsearch_search">Go</button>
-      <span style="color: red; visibility: hidden;" id="zipsearch_error">Please enter a valid 5-digit US zip code.</span>
-    </form>
-    <button id="vote" onclick="window.location.href='https://vote.gov/'"> Register to Vote!</button>
+
   </div>
   <div id="info-box"></div>
   <?xml version="1.0" encoding="utf-8"?>
@@ -138,6 +152,10 @@ Senators: Dianne Feinstein & Kamala D. Harris
   </svg>
 
   <a href="https://websitebeaver.com/how-to-make-an-interactive-and-responsive-svg-map-of-us-states-capitals" target="_blank" style="position: absolute; bottom: 0px; right: 0px; text-decoration: none; color: #8a8787">Tutorial is on Website Beaver</a>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="/scripts/index.js"></script>
+
+
   <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
   <script src="/scripts/index.js"></script>
 
@@ -159,35 +177,6 @@ Senators: Dianne Feinstein & Kamala D. Harris
       </div>
 </footer>
 
-
-
-
-  <head>
-      <title>Final Project</title>
-  </head>
-  <body>
-    <div class="w3-text-teal">
-      <h1>Visionary Voters</h1>
-      <!-- <div id="dropdown">
-        <input type="text" id="dropdown-input"></input>
-        <input id="search" type="submit" value="Submit">
-        <div class="results">
-          <ul id="name-list"></ul>
-      </div> -->
-
-      <form action="/calendar">
-        Start time:
-        <input type="datetime-local" name="starttime">
-        <input id ="calendar" type="submit" value="Calendar">
-      </form>
-
-      <div id="dropdown">
-   <input type="text" id="dropdown-input"></input>
-   <div class="results">
-     <ul id="Candidates"></ul>
-
-      <div id="pop_upbg">
-    </div>
 
     <script src="/scripts/script.js"></script>
   </body>
