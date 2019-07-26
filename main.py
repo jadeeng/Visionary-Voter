@@ -134,6 +134,22 @@ class AfterPostHandler(webapp2.RequestHandler):
         new_blogpost.put()
         self.response.write(after_template.render())
 
+class BlogPostListHandler(webapp2.RequestHandler):
+    def get(self):
+        search_template = jinja_current_dir.get_template('search.html')
+        self.response.write(search_template.render())
+
+    def post(self):
+        username = self.request.get('username')
+        username = username.strip()
+        if username == "":
+            list_of_posts = BlogPost.query().order(-BlogPost.created_at).fetch()
+        else:
+            list_of_posts = BlogPost.query().filter(BlogPost.creator_username == username).order(-BlogPost.created_at).fetch()
+        variable_dict = {'post': list_of_posts}
+        search_template = jinja_current_dir.get_template('search_results.html')
+        self.response.write(search_template.render())
+
 
 
 
@@ -145,6 +161,6 @@ app = webapp2.WSGIApplication([
     ('/blogpost', BlogPostHandler),
     ('/login', LoginPageHandler),
     ('/afterpost', AfterPostHandler),
-    ("/seed_data", SeedDataHandler),
+    ('/blogpostlist', BlogPostListHandler),
 
 ], debug=True)
