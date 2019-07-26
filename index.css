@@ -9,6 +9,30 @@
   margin: auto;
 }
 
+#nav h1{
+  position: absolute;
+  top: 0px;
+  justify-content: center;
+  text-align: center;
+}
+
+
+#vote{
+  position: absolute;
+  width: 100px;
+  height: 50px;
+  right: 1050px;
+  top: 20px;
+  background-color: #D3D3D3;
+  font-family: verdana;
+  font-weight: bold;
+}
+
+#vote: hover {
+  background-color: black;
+  color: white;
+}
+
 path:hover, circle:hover {
   stroke: #002868 !important;
   stroke-width:2px;
