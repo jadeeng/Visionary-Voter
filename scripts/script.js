@@ -1,17 +1,20 @@
-function fetchNames(zipcode) {
-  fetch(`http://localhost:8080/candidates?q=${zipcode}`)
+function fetchNames(prefix) {
+  fetch(`http://localhost:8080/CandidateList?q=${prefix}`)
     .then((resp) => resp.json())
     .then(addNames);
 }
 
-function addNames(names) {
+function addNames(candidates) {
   const ul = document.getElementById('Candidates');
   while (ul.firstChild) {
       ul.removeChild(ul.firstChild);
   }
-  for (let name of names) {
-    const li = document.createElement('li');
-    li.textContent = name;
+  for (let candidate of candidates) {
+    let li = document.createElement('li');
+    let link = document.createElement('a');
+    link.href = candidate.link;
+    link.textContent = candidate.name;
+    li.appendChild(link);
     ul.appendChild(li);
   }
 }
@@ -19,7 +22,9 @@ function addNames(names) {
 function setListener() {
   const inputEl = document.getElementById('dropdown-input');
   inputEl.addEventListener('input', () => {
-    fetchNames(inputEl.value);
+    if (inputEl.value.length === 5){
+      fetchNames(inputEl.value);
+    }
   });
 }
 

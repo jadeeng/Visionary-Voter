@@ -55,9 +55,10 @@ class MainHandler(webapp2.RequestHandler):
 class CandidateHandler(webapp2.RequestHandler):
     def get(self):
       prefix = self.request.get('q')
-      students = get_candidates()
+      candidates = Candidate.query().fetch()
+
       self.response.headers['Content-Type'] = 'application/json'
-      self.response.write(json.dumps(candidates))
+      self.response.write(json.dumps(map(Candidate.to_dict, candidates)))
 
 
 class CalendarHandler(webapp2.RequestHandler):
@@ -163,7 +164,7 @@ app = webapp2.WSGIApplication([
     ('/blogpost', BlogPostHandler),
     ('/login', LoginPageHandler),
     ('/afterpost', AfterPostHandler),
-    ('/blogpostlist', BlogPostListHandler)
+    ('/blogpostlist', BlogPostListHandler),
     ("/seed_data", SeedDataHandler),
 
 ], debug=True)
