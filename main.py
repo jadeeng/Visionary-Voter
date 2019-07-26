@@ -163,7 +163,7 @@ app = webapp2.WSGIApplication([
     ('/blogpost', BlogPostHandler),
     ('/login', LoginPageHandler),
     ('/afterpost', AfterPostHandler),
-    ('/blogpostlist', BlogPostListHandler)
+    ('/blogpostlist', BlogPostListHandler),
     ("/seed_data", SeedDataHandler),
 
 ], debug=True)
