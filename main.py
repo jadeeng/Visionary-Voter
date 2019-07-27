@@ -58,7 +58,8 @@ class CandidateHandler(webapp2.RequestHandler):
       candidates = Candidate.query().fetch()
 
       self.response.headers['Content-Type'] = 'application/json'
-      self.response.write(json.dumps(map(Candidate.to_dict, candidates)))
+      candidate_list = [ candidate.to_dict() for candidate in candidates ] # <-- this is a "list comprehension"
+      self.response.write(json.dumps(candidate_list))
 
 
 class CalendarHandler(webapp2.RequestHandler):
