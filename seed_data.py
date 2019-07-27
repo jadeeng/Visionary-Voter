@@ -17,6 +17,10 @@ def seed_data():
                              " 2002 to include racial subgroups in IPEDS data, "
                              "and for other purposes.")).put()
 
+    dianne_feinstein_zipcodes = ["CA"]
+    dianne_feinstein_key = Candidate(party="Democrat", name="Dianne Feinstein", zipcode=dianne_feinstein_zipcodes,
+    district="CA", )
+
     event1= Event(zipcode= "90291", district= "33", state="CA",
                   description=("Attend a political rally featuring speakers "
                                "Congress Representative Ted Lieu and Senator "
