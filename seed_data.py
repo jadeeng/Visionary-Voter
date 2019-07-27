@@ -17,9 +17,25 @@ def seed_data():
                              " 2002 to include racial subgroups in IPEDS data, "
                              "and for other purposes.")).put()
 
+    nancy_pelosi_zipcodes = [
+        "94102", "94103", "94104", "94105", "94107", "94108", "94109", "94110",
+        "94111", "94112", "94114", "94115", "94116", "94117", "94118", "94121",
+        "94122", "94123", "94124", "94127", "94129", "94130", "94131", "94133",
+        "94134", "94158"]
+
+    nancy_pelosi_key = Candidate(party="Democrat", name="Nancy Pelosi",
+                             zipcode=nancy_pelosi_zipcodes, district="12",
+                             state="CA",
+                             level_government="Congress Representative",
+                             policies_supported=(
+                             "To amend the Education Sciences and Reform Act of"
+                             " 2002 to include racial subgroups in IPEDS data, "
+                             "and for other purposes.")).put()
+
     dianne_feinstein_zipcodes = ["CA"]
-    dianne_feinstein_key = Candidate(party="Democrat", name="Dianne Feinstein", zipcode=dianne_feinstein_zipcodes,
-    district="CA", )
+    dianne_feinstein_key = Candidate(party="Democrat", name="Dianne Feinstein",
+                                    zipcode=dianne_feinstein_zipcodes, district="CA",
+                                    level_government="Senator", policies_supported="").put()
 
     event1= Event(zipcode= "90291", district= "33", state="CA",
                   description=("Attend a political rally featuring speakers "
