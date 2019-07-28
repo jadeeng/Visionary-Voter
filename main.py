@@ -28,9 +28,7 @@ def get_candidates(prefix):
   for candidates in CANDIDATES:
     if candidates.lower().startswith(prefix.lower()):
       results.append(candidates)
-      if len(results) == 5:
-        return results
-  return results
+    return results
 
   def get_events(prefix):
     results = []
