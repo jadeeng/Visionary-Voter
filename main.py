@@ -37,7 +37,7 @@ def get_candidates(prefix):
     for events in EVENTS:
       if events.lower().startswith(prefix.lower()):
         results.append(events)
-         return results
+        return results
     return results
 
 class SeedDataHandler(webapp2.RequestHandler):
