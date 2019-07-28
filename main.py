@@ -37,8 +37,7 @@ def get_candidates(prefix):
     for events in EVENTS:
       if events.lower().startswith(prefix.lower()):
         results.append(events)
-        if len(results) == 2:
-          return results
+         return results
     return results
 
 class SeedDataHandler(webapp2.RequestHandler):
@@ -82,7 +81,7 @@ class EventHandler(webapp2.RequestHandler):
         if self.request.get('after'):
             latest_event_key = ndb.Key(urlsafe=self.request.get('after'))
             latest_event = latest_event_key.get()
-            events = Event.query(Event.created_at > latest_meme.created_at).order(-Meme.created_at).fetch()
+            events = Event.query(Event.created_at > latest_event.created_at).order(-Meme.created_at).fetch()
         else:
             latest_event = latest_event.query().order(-latest_event.created_at).fetch(10)
         new_events_list = []
