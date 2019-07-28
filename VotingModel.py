@@ -18,7 +18,7 @@ class Event(ndb.Model):
     district= ndb.StringProperty(required=False)
     state = ndb.StringProperty(required=True)
     description = ndb.StringProperty(required=True)
-    date= ndb.DateTimeProperty(required=True)
+    date= ndb.DateTimeProperty(required=True, auto_now_add=True)
     candidate = ndb.KeyProperty(Candidate, required=False)
 
 

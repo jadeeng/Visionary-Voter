@@ -15,8 +15,7 @@ def seed_data():
                              policies_supported=(
                              "To amend the Education Sciences and Reform Act of"
                              " 2002 to include racial subgroups in IPEDS data, "
-                             "and for other purposes.")
-                             link="https://lieu.house.gov/").put()
+                             "and for other purposes.")                             ).put()
 
     nancy_pelosi_zipcodes = [
         "94102", "94103", "94104", "94105", "94107", "94108", "94109", "94110",
