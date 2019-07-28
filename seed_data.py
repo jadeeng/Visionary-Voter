@@ -15,7 +15,7 @@ def seed_data():
                              policies_supported=(
                              "To amend the Education Sciences and Reform Act of"
                              " 2002 to include racial subgroups in IPEDS data, "
-                             "and for other purposes.")).put()
+                             "and for other purposes.")                             ).put()
 
     nancy_pelosi_zipcodes = [
         "94102", "94103", "94104", "94105", "94107", "94108", "94109", "94110",
@@ -36,6 +36,26 @@ def seed_data():
     dianne_feinstein_key = Candidate(party="Democrat", name="Dianne Feinstein",
                                     zipcode=dianne_feinstein_zipcodes, district="CA",
                                     level_government="Senator", policies_supported="").put()
+
+    kamala_harris_zipcodes = ["CA"]
+    kamala_harris_key = Candidate(party="Democrat", name="Kamala Harris",
+                                    zipcode=kamala_harris_zipcodes, district="CA",
+                                    level_government="Senator", policies_supported="").put()
+
+    gavin_newsom_zipcodes = ["CA"]
+    gavin_newsom_key = Candidate(party="Democrat", name="Gavin Newsom",
+                                    zipcode=gavin_newsom_zipcodes, district="CA",
+                                    level_government="Governor", policies_supported="").put()
+
+    eleni_kounalakis_zipcodes = ["CA"]
+    eleni_kounalakis_ = Candidate(party="Democrat", name="Eleni Kounalakis",
+                                    zipcode=eleni_kounalakis__zipcodes, district="CA",
+                                    level_government="Mayor", policies_supported="").put()
+
+    eric_garcetti_zipcodes = ["CA"]
+    eric_garcetti_key = Candidate(party="Democrat", name="Eric Garcetti",
+                                    zipcode=eric_garcetti_zipcodes, district="CA",
+                                    level_government="Mayor", policies_supported="").put()
 
     event1= Event(zipcode= "90291", district= "33", state="CA",
                   description=("Attend a political rally featuring speakers "

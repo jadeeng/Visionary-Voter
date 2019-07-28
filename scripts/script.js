@@ -14,6 +14,9 @@ function addNames(candidates) {
     let link = document.createElement('a');
     link.href = candidate.link;
     link.textContent = candidate.name;
+    li.textContent = (candidate.party, candidate.district,
+                      candidate.state, candidate.policies_supported,
+                      candidate.level_government);
     li.appendChild(link);
     ul.appendChild(li);
   }
