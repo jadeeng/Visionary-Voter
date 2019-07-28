@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Full Screen Leaflet Map</title>
+   <meta charset="utf-8" />
+   <link
+       rel="stylesheet"
+       href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css"
+   />
+   <style>
+       body {
+           padding: 0;
+           margin: 0;
+       }
+       html, body, #canvas {
+           height: 100%;
+           width: 100%;
+       }
+   </style>
+</head>
+<body>
+   <div id="canvas" height= 50px></div>
+
+   <script
+       src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js">
+   </script>
+
+   <script>
+
+       // Initialize the map.
+
+       var map = L.map('canvas').setView([34.059202, -118.2622439], 14);
+       mapLink =
+           '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+       L.tileLayer(
+           'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+           attribution: '&copy; ' + mapLink + ' Contributors',
+           maxZoom: 18,
+           }).addTo(map);
+
+       // Attach events.
+
+       map.on('click', function(e) {
+           L.marker(e.latlng, {draggable: true, markerId: 9999}).addTo(map);
+       });
+
+       map.on('mouseup', function(e) {
+           saveData();
+       })
+
+       // Load data from the server if it already exists.
+
+       loadData();
+
+
+       // Library methods
+
+       // function loadData(allMarkers) {
+       //     for each(marker in allMarkers) {
+       //         L.marker(marker).addTo(map);
+       //     }
+       //     // TODO: Load all markers from the server.
+       // }
+
+       function saveData() {
+           var allMarkers = getAllMarkers();
+
+           console.log(allMarkers);
+           // TODO: Call some web method to save the markers.
+       }
+
+       function getAllMarkers() {
+             var allMarkers = [];
+
+           map.eachLayer(function (layer) {
+
+               if (layer.options.markerId != undefined) {
+                   // The layer is a marker.
+                   allMarkers.push({
+                       markerId: layer.options.markerId,
+                       latlng: null // todo: find latlng
+                   });
+               }
+
+           });
+
+           return allMarkers;
+       }
+
+
+   </script>
+</body>
+</html>
