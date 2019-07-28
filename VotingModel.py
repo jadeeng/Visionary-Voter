@@ -15,9 +15,10 @@ class Candidate(ndb.Model):
 
 class Event(ndb.Model):
     zipcode = ndb.StringProperty(required=True)
-    district= ndb.StringProperty(required=True)
+    district= ndb.StringProperty(required=False)
     state = ndb.StringProperty(required=True)
     description = ndb.StringProperty(required=True)
+    date= ndb.DateTimeProperty(required=True)
     candidate = ndb.KeyProperty(Candidate, required=False)
 
 
