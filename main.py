@@ -154,9 +154,6 @@ class BlogPostListHandler(webapp2.RequestHandler):
         search_template = jinja_current_dir.get_template('search_results.html')
         self.response.write(search_template.render())
 
-
-
-
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/CandidateList', CandidateHandler),
