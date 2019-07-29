@@ -23,12 +23,18 @@ function fetchNames(prefix) {
 
 function addNames(data) {
   const candidates = data.candidates;
-  const polling_places = data.polling;
-  const events = data.events;
-  const ul = document.getElementById('Candidates', 'Polling_places', 'Events');
-  while (ul.firstChild) {
+  const candidate_ul = document.getElementById('Candidates');
+  while (candidate_ul.firstChild) {
       ul.removeChild(ul.firstChild);
   }
+  // const polling_places = data.polling;
+  // const polling_places_ul = document.getElementById('Polling_places');
+  // while (ul.firstChild) {
+  //     ul.removeChild(ul.firstChild);
+  // const polling_places = data.polling;
+  // const events_ul = document.getElementById('Events');
+  // while (ul.firstChild) {
+  //         ul.removeChild(ul.firstChild);
   for (let candidate of candidates) {
     let li = document.createElement('li');
     let link = document.createElement('a');
@@ -38,7 +44,7 @@ function addNames(data) {
                       candidate.state, candidate.policies_supported,
                       candidate.level_government);
     li.appendChild(link);
-    ul.appendChild(li);
+    candidate_ul.appendChild(li);
   }
   for (let events of eventss) {
     let li = document.createElement('li');
