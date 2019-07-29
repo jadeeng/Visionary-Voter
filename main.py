@@ -28,9 +28,7 @@ def get_candidates(prefix):
   for candidates in CANDIDATES:
     if candidates.lower().startswith(prefix.lower()):
       results.append(candidates)
-      if len(results) == 5:
-        return results
-  return results
+    return results
 
   def get_events(prefix):
     results = []
@@ -39,8 +37,7 @@ def get_candidates(prefix):
     for events in EVENTS:
       if events.lower().startswith(prefix.lower()):
         results.append(events)
-        if len(results) == 2:
-          return results
+        return results
     return results
 
 class SeedDataHandler(webapp2.RequestHandler):
@@ -55,9 +52,11 @@ class MainHandler(webapp2.RequestHandler):
 class CandidateHandler(webapp2.RequestHandler):
     def get(self):
       prefix = self.request.get('q')
-      students = get_candidates()
+      candidates = Candidate.query().fetch()
+
       self.response.headers['Content-Type'] = 'application/json'
-      self.response.write(json.dumps(candidates))
+      candidate_list = [ candidate.to_dict() for candidate in candidates ] # <-- this is a "list comprehension"
+      self.response.write(json.dumps(candidate_list))
 
 
 class CalendarHandler(webapp2.RequestHandler):
@@ -82,7 +81,7 @@ class EventHandler(webapp2.RequestHandler):
         if self.request.get('after'):
             latest_event_key = ndb.Key(urlsafe=self.request.get('after'))
             latest_event = latest_event_key.get()
-            events = Event.query(Event.created_at > latest_meme.created_at).order(-Meme.created_at).fetch()
+            events = Event.query(Event.created_at > latest_event.created_at).order(-Meme.created_at).fetch()
         else:
             latest_event = latest_event.query().order(-latest_event.created_at).fetch(10)
         new_events_list = []
