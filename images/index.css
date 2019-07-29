@@ -115,7 +115,6 @@ img.header-header{
   width: 300px;
   height: 100px;
   right: 560px
-
 }
 
 /* img.visionary-voters{
@@ -175,7 +174,19 @@ div.content-item1{
   border-style: inset;
 
 }
-
+ul.images {
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    width: 900px;
+    overflow-x: auto;
+    background-color: #ddd;
+  }
+  ul.images li {
+    display: inline;
+    width: 150px;
+    height: 150px;
+  }
 
 img.resize1{
   width: 200px;
