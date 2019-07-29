@@ -6,7 +6,7 @@ from datetime import datetime
 from datetime import timedelta
 from google.appengine.api import users
 from google.appengine.ext import ndb
-from VotingModel import Event, Candidate, BlogPost
+from VotingModel import Event, Candidate, BlogPost, Polling
 from seed_data import seed_data
 
 jinja_current_dir = jinja2.Environment(
@@ -42,18 +42,24 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         start_template = jinja_current_dir.get_template("index.html")
         self.response.write(start_template.render())
-
+for i in range(5):
+    print i
 class CandidateHandler(webapp2.RequestHandler):
     def get(self):
       prefix = self.request.get('q')
-      candidates = Candidate.query().fetch()
-      events= Event.query().fetch()
-      polling_places=Polling.query.fetch()
+      candidates = Candidate.query(Candidate.zipcode==prefix).fetch()
+      events= Event.query().filter(Event.zipcode==prefix).fetch()
+      polling_places = Polling.query().fetch()
       self.response.headers['Content-Type'] = 'application/json'
-      candidate_list = [ Candidate.to_dict() for candidate in candidates ] # <-- this is a "list comprehension"
-      event_list = [ Event.to_dict() for event in events ]
-      polling_list = [ Polling.to_dict() for polling in polling_places ]
-      self.response.write(json.dumps(candidate_list, event_list, polling_list))
+      candidate_list = [ candidate.to_dict() for candidate in candidates ] # <-- this is a "list comprehension"
+      event_list = [ event.to_dict() for event in events ]
+      polling_list = [ polling.to_dict() for polling in polling_places ]
+      dict= {
+      "candidates":candidate_list,
+      "events":event_list,
+      "polling_places":polling_list
+      }
+      self.response.write(json.dumps(dict))
 
 
 class CalendarHandler(webapp2.RequestHandler):

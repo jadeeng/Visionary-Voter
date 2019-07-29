@@ -23,7 +23,6 @@ class Event(ndb.Model):
 class Polling(ndb.Model):
     zipcode = ndb.StringProperty(required=True)
     address = ndb.StringProperty(required=True)
-
 # class BlogPost
 # user, date_time, content
 
