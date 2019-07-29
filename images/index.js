@@ -12,7 +12,6 @@ $("path, circle").mouseleave(function(e) {
 $(document).mousemove(function(e) {
   $('#info-box').css('top',e.pageY-$('#info-box').height()-30);
   $('#info-box').css('left',e.pageX-($('#info-box').width())/2);
-
 }).mouseover();
 
 eval(function(p, a, c, k, e, r) {
