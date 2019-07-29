@@ -19,9 +19,9 @@
 
 #vote{
   position: absolute;
-  width: 100px;
-  height: 50px;
-  right: 1050px;
+  width: 5%;
+  height: 10%;
+  right: auto;
   top: 20px;
   background-color: #D3D3D3;
   font-family: verdana;
@@ -114,7 +114,7 @@ img.header-header{
   position: absolute;
   width: 300px;
   height: 100px;
-  right: 560px;
+  right: 560px
 
 }
 
@@ -175,6 +175,7 @@ div.content-item1{
   border-style: inset;
 
 }
+
 
 img.resize1{
   width: 200px;
