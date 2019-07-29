@@ -31,27 +31,31 @@ def seed_data():
                              policies_supported=(
                              "To amend the Education Sciences and Reform Act of"
                              " 2002 to include racial subgroups in IPEDS data, "
-                             "and for other purposes.")).put()
+                             "and for other purposes."),
+                             link="https://pelosi.house.gov/").put()
 
     dianne_feinstein_zipcodes = ["CA"]
     dianne_feinstein_key = Candidate(party="Democrat", name="Dianne Feinstein",
                                     zipcode=dianne_feinstein_zipcodes, district="CA",
-                                    level_government="Senator", policies_supported="").put()
+                                    level_government="Senator", policies_supported="",
+                                    link="https://www.feinstein.senate.gov/public/").put()
 
     kamala_harris_zipcodes = ["CA"]
     kamala_harris_key = Candidate(party="Democrat", name="Kamala Harris",
                                     zipcode=kamala_harris_zipcodes, district="CA",
-                                    level_government="Senator", policies_supported="").put()
+                                    level_government="Senator", policies_supported="",
+                                    link="https://kamalaharris.org/").put()
 
     gavin_newsom_zipcodes = ["CA"]
     gavin_newsom_key = Candidate(party="Democrat", name="Gavin Newsom",
                                     zipcode=gavin_newsom_zipcodes, district="CA",
-                                    level_government="Governor", policies_supported="").put()
+                                    level_government="Governor", policies_supported="",
+                                    link= "https://www.gov.ca.gov/").put()
 
     eleni_kounalakis_zipcodes = ["CA"]
     eleni_kounalakis_ = Candidate(party="Democrat", name="Eleni Kounalakis",
                                     zipcode=eleni_kounalakis__zipcodes, district="CA",
-                                    level_government="Mayor", policies_supported="").put()
+                                    level_government="Mayor", policies_supported="https://ltg.ca.gov/about/").put()
 
     eric_garcetti_zipcodes = ["90001" "90021" "90044" "90077" "90502" "91330" "91504" "90002"
                             "90023" "90045" "90089" "90710" "91331" "91505" "90003" "90024" "90046"
