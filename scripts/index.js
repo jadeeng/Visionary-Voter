@@ -23,11 +23,9 @@ function fetchNames(prefix) {
 
 function addNames(data) {
   const candidates = data.candidates;
-  const ul = document.getElementById('Candidates');
   const polling_places = data.polling;
-  const ul = document.getElementById('Polling');
   const events = data.events;
-  const ul = document.getElementById('events');
+  const ul = document.getElementById('Candidates', 'Polling_places', 'Events');
   while (ul.firstChild) {
       ul.removeChild(ul.firstChild);
   }
@@ -35,10 +33,25 @@ function addNames(data) {
     let li = document.createElement('li');
     let link = document.createElement('a');
     link.href = candidate.link;
-    link.textContent = candidate.name;
+    link.textContent = " " + candidate.name;
     li.textContent = (candidate.party, candidate.district,
                       candidate.state, candidate.policies_supported,
                       candidate.level_government);
+    li.appendChild(link);
+    ul.appendChild(li);
+  }
+  for (let events of eventss) {
+    let li = document.createElement('li');
+    li.textContent = (events.description, events.candidates);
+    li.appendChild(link);
+    ul.appendChild(li);
+  }
+  for (let polling of pollings) {
+    let li = document.createElement('li');
+    li.textContent = (candidate.party, candidate.district,
+                      candidate.state, candidate.policies_supported,
+                      candidate.level_government, polling.description,
+                      events.description, events.candidates);
     li.appendChild(link);
     ul.appendChild(li);
   }
