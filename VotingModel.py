@@ -20,6 +20,9 @@ class Event(ndb.Model):
     date= ndb.DateTimeProperty(required=True, auto_now_add=True)
     candidate = ndb.KeyProperty(Candidate, required=False)
 
+class Polling(ndb.Model):
+    zipcode = ndb.StringProperty(required=True)
+    address = ndb.StringProperty(required=True)
 
 # class BlogPost
 # user, date_time, content

@@ -53,7 +53,24 @@ def seed_data():
                                     zipcode=eleni_kounalakis__zipcodes, district="CA",
                                     level_government="Mayor", policies_supported="").put()
 
-    eric_garcetti_zipcodes = ["CA"]
+    eric_garcetti_zipcodes = ["90001" "90021" "90044" "90077" "90502" "91330" "91504" "90002"
+                            "90023" "90045" "90089" "90710" "91331" "91505" "90003" "90024" "90046"
+                            "90094" "90717" "91335" "91601" "90004" "90025" "90047" "90095" "90731"
+                            "91340" "91602" "90005" "90026" "90048" "90210" "90732" "91342" "91604"
+                            "90005" "90027" "90049" "90211" "90732" "91343" "91605" "90006" "90028"
+                            "90056" "90212" "90744" "91344" "91606" "90007" "90029" "90057" "90230"
+                            "90810" "91345" "91607" "90008" "90031" "90058" "90232" "91040" "91352"
+                            91608* 90010 90032 90059* 90245* 91042* 91356
+90011 90033 90061* 90247* 91214* 91364*
+90012 90034 90062 90248* 91303 91367
+90013 90035 90063* 90272 91304* 91401
+90014 90036 90064 90290* 91306 91402
+90015 90037 90065 90291* 91307 91403
+90016 90038 90066* 90292* 91311* 91405
+90017 90039 90067 90293* 91316 91406
+90018 90041 90068 90302* 91324 91411
+90019 90042 90069* 90402 * 91325 91423
+90020 90043* 90071 90501* 91326* 91436"]
     eric_garcetti_key = Candidate(party="Democrat", name="Eric Garcetti",
                                     zipcode=eric_garcetti_zipcodes, district="CA",
                                     level_government="Mayor", policies_supported="").put()
@@ -63,6 +80,29 @@ def seed_data():
                                "Congress Representative Ted Lieu and Senator "
                                "Kamala Harris"))
     event1.put()
+    polling1= Event(zipcode= "90291", address=("720 Venice, CA 90291 Oakwood Recreation Center Gymnasium Green Table"))
+    polling1.put()
+    polling2= Event(zipcode= "90291", address=("767 California Ave Venice, CA 90291 Penmar Recreation Center Gymnasium/ Orange Table"))
+    polling2.put()
+    polling3= Event(zipcode= "90291", address=("1341 Lake St Venice, CA 90291 Lifeguard Headquarters Garage/Orange Table"))
+    polling3.put()
+    polling4= Event(zipcode= "90291", address=("2300 Ocean Front Walk Venice, CA 90291 Adda Paul Safran Sr Housing Community Room"))
+    polling4.put()
+    polling5= Event(zipcode= "90291", address=("151 Ocean Front Walk Venice, CA 90291 the Bible Tabernacle Church Hall"))
+    polling5.put()
+    polling6= Event(zipcode= "90291", address=("1761 Washington Way Venice, CA 90291 Westminster Elementary Sch Auditorium"))
+    polling6.put()
+    polling7= Event(zipcode= "90291", address=("1010 Abbot Kinney Blvd Venice, CA 90291 Venice United Methodist Chr Fellowship Hall"))
+    polling7.put()
+    polling8= Event(zipcode= "90291", address=("2210 Lincoln Blvd Venice, CA 90291 New Bethel Baptist Church Meeting Room"))
+    polling8.put()
+    polling9= Event(zipcode= "90291", address=("503 Brooks Ave Venice, CA 90291 Tabor Courts Apartments Recreation Room"))
+    polling9.put()
+    polling10= Event(zipcode= "90291", address=("345 4th Ave Venice, CA 90291 Coeur D`Alene Ave Elementary Auditorium"))
+    polling10.put()
+    polling10= Event(zipcode= "90291", address=("810 Coeur D Alene Ave Venice, CA 90291"))
+    polling10.put()
+
 
     blog_post_1 = BlogPost(creator_id= "123456789" , creator_username= "abc", post_content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
     blog_post_1.put()

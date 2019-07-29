@@ -15,17 +15,11 @@ jinja_current_dir = jinja2.Environment(
     autoescape=True)
 
 
-CANDIDATES =[
-    "Steve",
-    "Barbie",
-    "Lewis"
-]
-
 def get_candidates(prefix):
   results = []
   if len(prefix) == 0:
     return results
-  for candidates in CANDIDATES:
+  for candidates in Candidate:
     if candidates.lower().startswith(prefix.lower()):
       results.append(candidates)
     return results
@@ -53,10 +47,13 @@ class CandidateHandler(webapp2.RequestHandler):
     def get(self):
       prefix = self.request.get('q')
       candidates = Candidate.query().fetch()
-
+      events= Event.query().fetch()
+      polling_places=Polling.query.fetch()
       self.response.headers['Content-Type'] = 'application/json'
-      candidate_list = [ candidate.to_dict() for candidate in candidates ] # <-- this is a "list comprehension"
-      self.response.write(json.dumps(candidate_list))
+      candidate_list = [ Candidate.to_dict() for candidate in candidates ] # <-- this is a "list comprehension"
+      event_list = [ Event.to_dict() for event in events ]
+      polling_list = [ Polling.to_dict() for polling in polling_places ]
+      self.response.write(json.dumps(candidate_list, event_list, polling_list))
 
 
 class CalendarHandler(webapp2.RequestHandler):
