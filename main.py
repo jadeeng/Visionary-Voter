@@ -53,10 +53,11 @@ class CandidateHandler(webapp2.RequestHandler):
     def get(self):
       prefix = self.request.get('q')
       candidates = Candidate.query().fetch()
-
+      events= Event.query().fetch()
       self.response.headers['Content-Type'] = 'application/json'
-      candidate_list = [ candidate.to_dict() for candidate in candidates ] # <-- this is a "list comprehension"
-      self.response.write(json.dumps(candidate_list))
+      candidate_list = [ Candidate.to_dict() for candidate in candidates ] # <-- this is a "list comprehension"
+      event_list = [ Event.to_dict() for event in events ]
+      self.response.write(json.dumps(candidate_list, events))
 
 
 class CalendarHandler(webapp2.RequestHandler):
