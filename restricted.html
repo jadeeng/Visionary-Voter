@@ -2,11 +2,30 @@
 <html>
   <head>
     <title>Restricted Access</title>
+    <style type="text/css">
+
+    /* Style the submit button with a specific background color etc */
+    input[type=submit] {
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    /* When moving the mouse over the submit button, add a darker green color */
+    input[type=submit]:hover {
+      background-color: #45a049;
+    }
+
+    </style>
   </head>
   <body>
     <h1>You Must Be Logged In To Access This Page</h1>
     <form action="/login">
-         <button type="submit">Login</button>
+         <input type="submit" value = "Log In">
     </form>
   </body>
 </html>
