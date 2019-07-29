@@ -19,11 +19,11 @@
 
 #vote{
   position: relative;
-  width: 5%;
-  height: 10%;
+  /* width: 5%;
+  height: 10%; */
   right: auto;
   top: 20px;
-  background-color: #D3D3D3;
+  /* background-color: #D3D3D3; */
   font-family: verdana;
   font-weight: bold;
 }
