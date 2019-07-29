@@ -153,14 +153,15 @@ img.header-header{
       display: flex;
       /* flex-wrap: wrap; */
       flex-direction: row;
-      height: 100px;
+      /* height: 100px;
       padding: 8px;
       text-align: center;
       position: relative;
       bottom: 0;
       width:500px;
       min-height: 30vh;
-      margin: 150px;
+      margin: auto; */
+
   }
 
 .content-item1{
@@ -174,7 +175,7 @@ div.content-item1{
   border-style: inset;
 
 }
-ul.images {
+/* ul.images {
     margin: 0;
     padding: 0;
     white-space: nowrap;
@@ -186,7 +187,7 @@ ul.images {
     display: inline;
     width: 150px;
     height: 150px;
-  }
+  } */
 
 img.resize1{
   width: 200px;
@@ -294,8 +295,14 @@ div.content-item6{
   /* justify-content: center;
   text-align: center;
   margin: auto; */
-  margin: 150px;
+  margin: auto;
+  position: relative;
+  /* top: 200px; */
+  padding-top: 200px;
+  display: flex;
+  flex-direction: row;
 }
+
 
 .blue{
   background-color: #F0F8FF;
