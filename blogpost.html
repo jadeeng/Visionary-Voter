@@ -44,10 +44,10 @@
   <form method = "post" action= "/afterpost">
 
     <label for="username">Username</label>
-    <input type="text" id="username" name="username" required = "required" placeholder="Your username.." >
+    <input type="text" id="username" name="username" required = "required" placeholder="Your username.." pattern="\S+.*">
 
     <label for="subject">Subject</label>
-    <textarea id="subject" name="subject" required = "required" placeholder="Write something.." style="height:200px"></textarea>
+    <textarea id="subject" name="subject" required = "required" placeholder="Write something.." pattern="\S+.*" style="height:200px"></textarea>
 
     <input type="submit" value="Submit">
 
