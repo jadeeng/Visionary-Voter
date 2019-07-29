@@ -110,6 +110,14 @@ img.hamburger{
   height: 50px;
 }
 
+img.header-header{
+  position: absolute;
+  width: 300px;
+  height: 100px;
+  right: 560px;
+
+}
+
 /* img.visionary-voters{
   width: 450px;
   height: 150px;
@@ -120,16 +128,32 @@ img.hamburger{
   padding: 8px;
   text-align: center;
   position: relative;
-  /* left: 0 ; right: 0;  */
   bottom: 0;
   width:100%
   background-color:	#DCDCDC;
   min-height: 30vh;
   margin: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
+  display: inline-block;
+  flex-wrap: wrap;
 }
+
+.box {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      height: 100px;
+      padding: 8px;
+      text-align: center;
+      position: relative;
+      bottom: 0;
+      width:100%
+      background-color:	#DCDCDC;
+      min-height: 30vh;
+      margin: auto;
+  }
 
 .content-item1{
   padding:10px;
@@ -140,7 +164,6 @@ img.hamburger{
 div.content-item1{
   text-align: center;
   border-style: inset;
-  display: inline;
 
 }
 
@@ -165,12 +188,14 @@ img.resize2{
 div.content-item2{
   text-align: center;
   border-style: inset;
-  display: inline;
 }
 
 #footer p{
   font-family: verdana;
   font-weight: bold;
+  justify-content: center;
+  text-align: center;
+  margin: auto;
 }
 
 .blue{
