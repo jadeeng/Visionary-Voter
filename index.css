@@ -136,14 +136,14 @@ img.header-header{
   flex-direction: row;
   justify-content: center;
   display: inline-block;
-  flex-wrap: wrap;
-  -ms-box-orient: horizontal;
-   display: -webkit-box;
+  /* flex-wrap: wrap; */
+  box-orient: horizontal;
+   /* display: -webkit-box;
    display: -moz-box;
    display: -ms-flexbox;
    display: -moz-flex;
    display: -webkit-flex;
-   display: flex;
+   display: flex; */
 }
 
 .nowrap{
@@ -152,7 +152,7 @@ img.header-header{
 
 .box {
       display: flex;
-      flex-wrap: wrap;
+      /* flex-wrap: wrap; */
       flex-direction: row;
       height: 100px;
       padding: 8px;
@@ -161,7 +161,7 @@ img.header-header{
       bottom: 0;
       width:500px;
       min-height: 30vh;
-      margin: auto;
+      margin: 150px;
   }
 
 .content-item1{
@@ -282,6 +282,7 @@ div.content-item6{
   /* justify-content: center;
   text-align: center;
   margin: auto; */
+  margin: 150px;
 }
 
 .blue{
