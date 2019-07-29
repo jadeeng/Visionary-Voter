@@ -19,9 +19,9 @@
 
 #vote{
   position: absolute;
-  width: 100px;
-  height: 50px;
-  right: 1050px;
+  width: 5%;
+  height: 10%;
+  right: auto;
   top: 20px;
   background-color: #D3D3D3;
   font-family: verdana;
@@ -112,9 +112,9 @@ img.hamburger{
 
 img.header-header{
   position: absolute;
-  width: 300px;
-  height: 100px;
-  right: 560px;
+  width: 5%;
+  height: 10%;
+  right: auto;
 
 }
 
@@ -175,8 +175,21 @@ div.content-item1{
   border-style: inset;
 
 }
+ul.images {
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    width: 900px;
+    overflow-x: auto;
+    background-color: #ddd;
+  }
+  ul.images li {
+    display: inline;
+    width: 150px;
+    height: 150px;
+  }
 
-img.resize1{
+#democrat_candidates{
   width: 200px;
   height: 150px;
   object-fit:cover;
