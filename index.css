@@ -123,14 +123,13 @@ img.header-header{
   height: 150px;
 } */
 
-#footer{
+.flex-container{
   height: 100px;
   padding: 8px;
   text-align: center;
-  position: relative;
+  position: absolute;
   bottom: 0;
-  width:100%
-  background-color:	#DCDCDC;
+  width:550px;
   min-height: 30vh;
   margin: auto;
   display: flex;
@@ -138,6 +137,17 @@ img.header-header{
   justify-content: center;
   display: inline-block;
   flex-wrap: wrap;
+  -ms-box-orient: horizontal;
+   display: -webkit-box;
+   display: -moz-box;
+   display: -ms-flexbox;
+   display: -moz-flex;
+   display: -webkit-flex;
+   display: flex;
+}
+
+.nowrap{
+  flex-wrap:nowrap;
 }
 
 .box {
@@ -149,8 +159,7 @@ img.header-header{
       text-align: center;
       position: relative;
       bottom: 0;
-      width:100%
-      background-color:	#DCDCDC;
+      width:500px;
       min-height: 30vh;
       margin: auto;
   }
@@ -158,7 +167,7 @@ img.header-header{
 .content-item1{
   padding:10px;
   margin:10px;
-  flex: 1
+  flex:1;
 }
 
 div.content-item1{
@@ -182,7 +191,7 @@ img.resize2{
 .content-item2{
   padding:10px;
   margin:10px;
-  flex: 1
+  flex:1;
 }
 
 div.content-item2{
@@ -190,15 +199,97 @@ div.content-item2{
   border-style: inset;
 }
 
-#footer p{
-  font-family: verdana;
-  font-weight: bold;
+img.resize3{
+  width: 200px;
+  height: 150px;
+  object-fit:cover;
+}
+
+.content-item3{
+  padding:10px;
+  margin:10px;
+  flex:1;
+}
+
+div.content-item3{
+  text-align: center;
+  border-style: inset;
+}
+
+img.resize4{
+  width: 200px;
+  height: 150px;
+  object-fit:cover;
+}
+
+.content-item4{
+  padding:10px;
+  margin:10px;
+  flex:1;
+}
+
+div.content-item4{
+  text-align: center;
+  border-style: inset;
+}
+
+img.resize5{
+  width: 200px;
+  height: 150px;
+  object-fit:cover;
+}
+
+.content-item5{
+  padding:10px;
+  margin:10px;
+  flex:1;
+}
+
+div.content-item5{
+  text-align: center;
+  border-style: inset;
+}
+
+img.resize6{
+  width: 200px;
+  height: 150px;
+  object-fit:cover;
+}
+
+.content-item6{
+  padding:10px;
+  margin:10px;
+  flex:1;
+}
+
+div.content-item6{
+  text-align: center;
+  border-style: inset;
+}
+
+
+
+
+
+.footer p {
   justify-content: center;
   text-align: center;
   margin: auto;
 }
+#footer p{
+  font-family: verdana;
+  font-weight: bold;
+  /* justify-content: center;
+  text-align: center;
+  margin: auto; */
+}
 
 .blue{
   background-color: #F0F8FF;
+  color:black;
+}
+
+.red{
+  background-color: #FFE4E1;
   color:black;
 }

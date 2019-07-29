@@ -8,10 +8,9 @@ class Candidate(ndb.Model):
     state = ndb.StringProperty(required=True)
     level_government = ndb.StringProperty(required=True)
     policies_supported = ndb.StringProperty(required=False)
-#policies supported only includes the latest policy supported
-    name = ndb.StringProperty(required=True)
-    policies_supported = ndb.StringProperty(required=False)
     link = ndb.StringProperty(required=False)
+#policies supported only includes the latest policy supported
+
 
 class Event(ndb.Model):
     zipcode = ndb.StringProperty(required=True)
